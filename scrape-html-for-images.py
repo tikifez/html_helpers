@@ -68,6 +68,8 @@ def _extractImages(soup):
         image_url = urljoin(url, image['src'])
         filename = image["src"].split("/")[-1]
         outpath = os.path.join(out_folder, filename)
+        o_file = urlparse(image['src'])
+        outpath = os.path.join(out_folder, o_file.path.split("/")[-1])
         urlretrieve(image_url, outpath)
 
 if __name__ == "__main__":
