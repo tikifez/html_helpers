@@ -71,10 +71,15 @@ def _extractImages(soup):
         urlretrieve(image_url, outpath)
 
 if __name__ == "__main__":
+    archive_path = "./_archive/"
     if len(sys.argv) < 3:
         url = sys.argv[-1]
         out_folder = "./_images/"
-    else:
+    elif len(sys.argv) == 3:
         out_folder = sys.argv[-1]
         url = sys.argv[-2]
-    main(url, out_folder)
+    else:
+        archive_path = sys.argv[-1]
+        out_folder = sys.argv[-2]
+        url = sys.argv[-3]
+    main(url, out_folder, archive_path)
